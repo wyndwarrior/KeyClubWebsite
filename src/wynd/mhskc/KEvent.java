@@ -74,13 +74,18 @@ public class KEvent {
 	}
 	
 	private static final SimpleDateFormat parse = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+	private static final SimpleDateFormat parse2 = new SimpleDateFormat("MM/dd/yyyy");
 	private static final SimpleDateFormat convert = new SimpleDateFormat("MMMM d, yyyy @ h:mm a");
 	static{
+		parse2.setTimeZone(TimeZone.getTimeZone("CST"));
 		parse.setTimeZone(TimeZone.getTimeZone("CST"));
 		convert.setTimeZone(TimeZone.getTimeZone("CST"));
 	}
 	public static Date parseDate(String s) throws ParseException{
 		return parse.parse(s);
+	}
+	public static Date parseDate2(String s) throws ParseException{
+		return parse2.parse(s);
 	}
 
 	public static String convertDate(Date d){

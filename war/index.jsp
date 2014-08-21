@@ -134,21 +134,7 @@ viewEvent('<%=ev%>');
 		%>
 	
 		<div class="row" id="home">
-
-
 		<div class="row">
-		<div class="col-xs-12 col-sm-7 well">
-			<h2>Featured Event</h2>
-			<h4 id="featuredTitle"></h4>
-			<p><b id="featuredDate"></b><br/><br/>
-			<span id="featuredDesc"></span>
-			</p>
-			<a href="#" onClick="viewFeatured()" class="btn btn-primary">View Event</a>
-		</div>
-		<div class="col-xs-12 col-sm-5">
-			<img class="img-thumbnail" src="img/Battery.png" />
-		</div>
-		</div>
 			<div class="col-xs-12 col-sm-12" >
 				<div class="row">
 					<div class="col-sm-4">
@@ -185,8 +171,20 @@ viewEvent('<%=ev%>');
 					</div>
 				</div>
 			</div>
-			
 		</div>
+		<br/>
+		<div class="row">
+		<div class="col-xs-12 col-sm-7 well center">
+			<h2>Featured Event</h2>
+			<h4 id="featuredTitle"></h4>
+			<p><b id="featuredDate"></b><br/><br/>
+			<span id="featuredDesc"></span>
+			</p>
+			<a href="#" onClick="viewFeatured()" class="btn btn-primary">View Event</a>
+		</div>
+		</div>
+		</div>
+
 
 		<div id="connect">
 			<%
@@ -427,7 +425,7 @@ viewEvent('<%=ev%>');
 		</div>
 		<hr>
 		<div class="footer">
-			<p>&copy; Wynd 2013</p>
+			<p>&copy; Wynd 2014</p>
 		</div>
 	</div>
 </body>

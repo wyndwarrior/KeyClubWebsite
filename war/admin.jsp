@@ -347,6 +347,12 @@
 		<div id="hourman" class="col-md-9 center well">
 		<h2>Hours Management</h2><br/>
 		<br/>
+		<h4>Clear Hours</h4>
+		<p>This will clear all hours up to a given date. All hours given before the set date will be revoked. Please use with caution.</p>
+		<div class="bootstrap-timepicker">
+			<input class="form-control" id="hoursDeleteDate" type="text" class="input-small">
+		</div><br/>
+		<a href="#" id="hoursDeleteBtn" class="btn btn-danger">CLEAR ALL HOURS BEFORE THIS DATE</a><br/><br/>
 		<table class="table table-hover text-left">
 			<thead>
 				<tr>
@@ -448,7 +454,7 @@
 		
 		<hr>
 		<div class="footer">
-			<p>&copy; Wynd 2013</p>
+			<p>&copy; Wynd 2014</p>
 		</div>
 
 	</div>

@@ -89,10 +89,30 @@ function displayUser(id){
 	getInfo(id);
 }
 
-var startDatePick, endDatePick, startTimePick, endTimePick;
+var startDatePick, endDatePick, startTimePick, endTimePick, datePick;
 
 $(document).ready(function(){
 	slideFadeOut($("#mcevent"),0);
+	var now = new Date();
+	datePick = $("#hoursDeleteDate").datepicker({}).on('changeDate', function(ev) {
+		datePick.hide();
+	}).datepicker('setValue', now).data('datepicker');
+	$("#hoursDeleteBtn").click(function(){
+			var date = $("#hoursDeleteDate").val();
+			
+			if( !confirm("Are you sure you want to clear all hours before " + date +"? This action cannot be reversed.")){
+				return false;
+			}
+			
+			var data = "date="+uenc(date);
+			
+			api("clearHours", data, function(data){
+				if( data != null){
+					alert("Hours cleared");
+				}
+			});
+			
+	});
 });
 
 function setTimeAndDate(sdate, stime, edate, etime){

@@ -2,6 +2,7 @@ package wynd.mhskc;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -32,6 +33,7 @@ public class MHSKeyClubServlet extends HttpServlet {
 	public static final String JEVENT = "joinEvent";
 	public static final String QEVENT = "quitEvent";
 	public static final String GHOURS = "giveHours";
+	public static final String CHOURS = "clearHours";
 	public static final String SFEATURED = "setFeatured";
 	public static final String GFEATURED = "getFeatured";
 	public static final String LHOURS = "listHours";
@@ -329,6 +331,36 @@ public class MHSKeyClubServlet extends HttpServlet {
 			}
 			AppEngine.close(pm);
 			apiReturn(resp, id);
+			return;
+		}
+		
+		if( CHOURS.equals(action)){
+			String sdate = req.getParameter("date");
+			if(bad(sdate)){
+				apiError(resp, "Field(s) missing");
+				return;
+			}
+			PersistenceManager pm = AppEngine.getPM();
+			Date date = null;
+			try {
+				date = KEvent.parseDate2(sdate);
+			} catch (ParseException e) {
+				apiError(resp, "Bad date");
+				e.printStackTrace();
+				return;
+			}
+			KUserList list = KUserList.getObject(pm);
+			for(KUserSmall ks : list.list){
+				KUser user = KUser.getObject(pm, ks.getId());
+				for(KEventSmall ev : user.getEventList()){
+					if( ev.getEdate().compareTo(date) < 0)
+						ev.setHoursEarned(0);
+				}
+				user.calcHours();
+				AppEngine.save(pm, user);
+			}
+			AppEngine.close(pm);
+			apiReturn(resp, "true");
 			return;
 		}
 		
