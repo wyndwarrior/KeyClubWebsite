@@ -15,13 +15,10 @@ import com.restfb.json.JsonObject;
 import com.restfb.types.User;
 
 
-public class Facebook {  
+public class Facebook {
+    // I will be very sad if this is used improperly
     private static final String secret = "6bfc2200e051062d55bb91381da42f6c";
-    private static final String client_id = "537438109647390";  
-    
-
-    //private static final String secret = "4804f5e6f923daf8aed696864906d4e2";
-    //private static final String client_id = "643608078994014";
+    private static final String client_id = "537438109647390";
     
     public static String redirect_uri = null; 
     private static final String[] perms = "user_about_me friends_about_me email rsvp_event".split(" ");
